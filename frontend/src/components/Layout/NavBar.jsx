@@ -18,6 +18,7 @@ import {
 import { cn } from "../lib/utils";
 import api from "../../service/api";
 import { toast } from "sonner";
+import { useAuth } from "../../context/AuthContext";
 
 const navItems = [
   {
@@ -36,7 +37,7 @@ const navItems = [
 export const FloatingNav = ({ className }) => {
   const { scrollYProgress } = useScroll();
   const navigate = useNavigate();
-
+  const { logout } = useAuth();
   const [visible, setVisible] = useState(true);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
@@ -63,16 +64,17 @@ export const FloatingNav = ({ className }) => {
       });
 
       // Check if the response is successful
+  
       if (response.status === 200) {
         // Remove the access and refresh tokens from local storage
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
+        localStorage.clear();
+        logout();
 
         // Show success toast
         toast.success("Successfully logged out!");
 
         // Redirect to the login page
-        navigate('/login');
+        navigate('/');
       }
     } catch (error) {
       console.error('Logout failed:', error);
