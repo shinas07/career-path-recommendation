@@ -1,0 +1,24 @@
+{
+    "certifications": [
+        {
+            "name": "Basic Life Support (BLS)",
+            "provider": "American Heart Association",
+            "date": "2024-01"
+        },
+        {
+            "name": "Advanced Trauma Life Support (ATLS)",
+            "provider": "American College of Surgeons",
+            "date": "2024-02"
+        },
+        {
+            "name": "Neonatal Resuscitation Program (NRP)",
+            "provider": "AAP",
+            "date": "2024-03"
+        },
+        {
+            "name": "Medical Imaging Certification",
+            "provider": "Radiology Board",
+            "date": "2024-04"
+        }
+    ]
+}

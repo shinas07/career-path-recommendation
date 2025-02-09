@@ -1,0 +1,16 @@
+{
+    "certifications": [
+        {
+            "name": "Python Developer",
+            "level": "Advanced"
+        },
+        {
+            "name": "AWS Certified",
+            "level": "Professional"
+        },
+        {
+            "name": "Data Science",
+            "level": "Intermediate"
+        }
+    ]
+}

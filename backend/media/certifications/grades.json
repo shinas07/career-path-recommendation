@@ -1,0 +1,29 @@
+{
+    "certifications": [
+        {
+            "subject": "Mathematics",
+            "grade": "A+",
+            "year": "2024"
+        },
+        {
+            "subject": "Physics",
+            "grade": "A",
+            "year": "2024"
+        },
+        {
+            "subject": "Computer Science",
+            "grade": "A+",
+            "year": "2024"
+        },
+        {
+            "subject": "English",
+            "grade": "B+",
+            "year": "2024"
+        },
+        {
+            "subject": "Chemistry",
+            "grade": "A-",
+            "year": "2024"
+        }
+    ]
+}

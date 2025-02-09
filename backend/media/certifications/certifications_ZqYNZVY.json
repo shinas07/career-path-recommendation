@@ -1,0 +1,24 @@
+{
+    "certifications": [
+        {
+            "name": "Python Programming",
+            "provider": "Coursera",
+            "date": "2024-01"
+        },
+        {
+            "name": "Full Stack Development",
+            "provider": "Udemy",
+            "date": "2024-02"
+        },
+        {
+            "name": "Machine Learning Basics",
+            "provider": "edX",
+            "date": "2024-01"
+        },
+        {
+            "name": "AWS Fundamentals",
+            "provider": "Amazon",
+            "date": "2024-03"
+        }
+    ]
+}
