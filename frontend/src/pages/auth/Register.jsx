@@ -5,10 +5,12 @@ import {
   UserIcon, 
   EnvelopeIcon, 
   LockClosedIcon,
-  AcademicCapIcon,
+  RocketLaunchIcon,
+  LightBulbIcon,
+  UserGroupIcon
 } from '@heroicons/react/24/outline';
-import { useAuth } from '../../context/AuthContext';
 import { toast } from 'sonner';
+import { useAuth } from '../../context/AuthContext';
 
 function Register() {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ function Register() {
     name: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    confirmPassword: ''
   });
 
   const handleSubmit = async (e) => {
@@ -32,107 +34,143 @@ function Register() {
       const response = await register(formData);
       if (response.success) {
         navigate('/login');
-      } else {
-        toast.error(response.error);
       }
     } catch (error) {
-    console.log(error)
-      toast.error('Registration failed',error);
+      toast.error(error.response?.data?.error || 'Registration failed');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-md w-full"
-      >
-        <div className="bg-gray-900/30 p-8 rounded-2xl backdrop-blur-xl border border-gray-800 shadow-xl">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-2">Create Account</h2>
-            <p className="text-gray-400">
-              Start your journey to career success
+    <div className="min-h-screen bg-[#0a0a0a] text-white flex">
+      {/* Right Panel - Registration Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 order-2 lg:order-1">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-md w-full"
+        >
+          <div className="bg-[#111111]/80 p-8 rounded-2xl backdrop-blur-xl border border-[#2a2a2a]">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-2">Start Your Journey</h2>
+              <p className="text-gray-400">Create your account to begin</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <FormInput
+                icon={<UserIcon className="w-5 h-5" />}
+                type="text"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                required
+              />
+
+              <FormInput
+                icon={<EnvelopeIcon className="w-5 h-5" />}
+                type="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                required
+              />
+
+              <FormInput
+                icon={<LockClosedIcon className="w-5 h-5" />}
+                type="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={(e) => setFormData({...formData, password: e.target.value})}
+                required
+              />
+
+              <FormInput
+                icon={<LockClosedIcon className="w-5 h-5" />}
+                type="password"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                required
+              />
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-3 px-4 rounded-lg text-white text-lg font-semibold
+                         bg-blue-600 hover:bg-blue-700
+                         focus:outline-none focus:ring-2 focus:ring-blue-500
+                         transform transition-all duration-300
+                         disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isLoading ? 'Creating Account...' : 'Create Account'}
+              </button>
+            </form>
+
+            <div className="mt-6 text-center">
+              <p className="text-gray-400">
+                Already have an account?{' '}
+                <Link to="/login" className="text-blue-500 hover:text-blue-400">
+                  Sign in
+                </Link>
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Left Panel - Info */}
+      <div className="hidden lg:flex lg:w-1/2 p-12 flex-col justify-center order-1 lg:order-2">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8"
+        >
+          <div className="space-y-4">
+            <h1 className="text-4xl font-bold">
+              Discover Your
+              <span className="text-purple-400"> Perfect Career</span>
+            </h1>
+            <p className="text-xl text-gray-300">
+              Join us to unlock personalized career recommendations based on your unique profile.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <FormInput
-              icon={<UserIcon className="w-5 h-5" />}
-              type="text"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              required
+          <div className="space-y-6">
+            <Benefit 
+              icon={<RocketLaunchIcon className="w-6 h-6" />}
+              title="Career Discovery"
+              description="Find the perfect career path aligned with your skills"
             />
-
-            <FormInput
-              icon={<EnvelopeIcon className="w-5 h-5" />}
-              type="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-              required
+            <Benefit 
+              icon={<LightBulbIcon className="w-6 h-6" />}
+              title="Personalized Insights"
+              description="Get tailored recommendations for your growth"
             />
-
-            <FormInput
-              icon={<LockClosedIcon className="w-5 h-5" />}
-              type="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={(e) => setFormData({...formData, password: e.target.value})}
-              required
+            <Benefit 
+              icon={<UserGroupIcon className="w-6 h-6" />}
+              title="Expert Guidance"
+              description="Access curated resources and learning paths"
             />
-
-            <FormInput
-              icon={<LockClosedIcon className="w-5 h-5" />}
-              type="password"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
-              required
-            />
-
-           
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full py-3 px-4 rounded-lg text-white text-lg font-semibold
-                       bg-gradient-to-r from-blue-500 to-blue-600
-                       hover:from-blue-600 hover:to-blue-700
-                       focus:outline-none focus:ring-2 focus:ring-blue-500
-                       transform hover:scale-105 transition-all duration-300
-                       disabled:opacity-50 disabled:cursor-not-allowed
-                       shadow-lg shadow-blue-500/30"
-            >
-              {isLoading ? (
-                <div className="flex items-center justify-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Creating Account...
-                </div>
-              ) : (
-                'Create Account'
-              )}
-            </button>
-          </form>
-
-          <div className="mt-6 text-center">
-            <p className="text-gray-400">
-              Already have an account?{' '}
-              <Link to="/login" className="text-blue-400 hover:text-blue-300">
-                Sign in
-              </Link>
-            </p>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function Benefit({ icon, title, description }) {
+  return (
+    <div className="flex items-start space-x-4">
+      <div className="flex-shrink-0 p-3 bg-[#1a1a1a] rounded-lg">
+        {icon}
+      </div>
+      <div>
+        <h3 className="font-semibold mb-1">{title}</h3>
+        <p className="text-gray-400 text-sm">{description}</p>
+      </div>
     </div>
   );
 }
@@ -144,8 +182,9 @@ function FormInput({ icon, ...props }) {
         {icon}
       </div>
       <input
-        className="block w-full pl-10 pr-4 py-3 border border-gray-700 rounded-lg
-                   bg-gray-800/50 text-white placeholder-gray-400
+        className="block w-full pl-10 pr-4 py-3 
+                   border border-[#2a2a2a] rounded-lg
+                   bg-[#1a1a1a] text-white placeholder-gray-500
                    focus:outline-none focus:ring-2 focus:ring-blue-500
                    transition-all duration-300"
         {...props}
