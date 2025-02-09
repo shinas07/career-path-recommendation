@@ -1,0 +1,29 @@
+{
+    "grades": [
+        {
+            "subject": "Anatomy",
+            "grade": "A+",
+            "year": "2024"
+        },
+        {
+            "subject": "Physiology",
+            "grade": "A",
+            "year": "2024"
+        },
+        {
+            "subject": "Pathology",
+            "grade": "A-",
+            "year": "2024"
+        },
+        {
+            "subject": "Pharmacology",
+            "grade": "B+",
+            "year": "2024"
+        },
+        {
+            "subject": "Microbiology",
+            "grade": "A",
+            "year": "2024"
+        }
+    ]
+}
