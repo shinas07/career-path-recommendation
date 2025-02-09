@@ -1,119 +1,186 @@
 # Career Path Recommendation System
 
-An AI-powered career guidance platform that analyzes students' academic records and certifications to provide personalized career recommendations.
+A full-stack application that helps students identify optimal career paths based on their academic performance and certifications. The system analyzes grade cards and certifications to provide personalized career recommendations and upskilling suggestions.
 
-![Career Recommendations](assets/career-recommendations.png)
-![Document Upload](assets/document-upload.png)
+## System Overview
 
-## Overview
-
-The Career Path Recommendation System helps students:
-- Upload and analyze academic records (grade cards)
-- Process certification information
-- Get AI-powered career recommendations
-- Access relevant learning resources
-- View personalized skill development paths
-
-## Key Features
-
-### Core Features
-- 🔐 Secure user authentication
-- 📄 Document upload (CSV/JSON support)
-- 🤖 AI-powered analysis using Google Gemini
-- 🎯 Personalized career recommendations
-- 📚 Learning resource suggestions
-- 📊 Academic strength analysis
-
-### Technical Features
-- Dark theme UI
-- Responsive design
-- File format validation
-- Real-time processing
-- YouTube tutorial integration
-- Error handling & validation
+The Career Path Recommendation System provides:
+- Secure user authentication and profile management
+- Grade card and certification upload functionality
+- Academic performance analysis
+- AI-powered career recommendations
+- Course suggestions for skill enhancement
+- Data visualization of student strengths
 
 ## Tech Stack
 
 ### Backend
-- Django 4.2+
 - Django REST Framework
-- PostgreSQL
-- Google Gemini AI
-- YouTube Data API
-- Python 3.8+
+- PostgreSQL Database
+- Google Gemini API for AI recommendations
+- YouTube API for course suggestions
+- JWT Authentication
+- Pandas for processing CSV and JSON data
 
 ### Frontend
-- React 18+
+- React with Vite
 - Tailwind CSS
-- Framer Motion
-- Axios
-- React Router v6
-- Context API
+- React Router for navigation
+- Sonner for notifications
+- Context API for state management
 
 ## Project Structure
-career-path-recommendation/
-├── backend/ # Django backend
-├── frontend/ # React frontend
-├── sample_data/ # Test data samples
-├── assets/ # Screenshots & images
-├── requirements.txt # Python dependencies
-└── README.md # Project documentation
 
+### Backend Structure
+```
+backend/
+├── careerpath/           # Main application
+│   ├── views/
+│   ├── models/
+│   └── urls.py
+├── users/               # Authentication and user management
+│   ├── views.py
+│   ├── models.py
+│   └── urls.py
+└── config/             # Project configuration
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+```
 
-## Quick Start
+### Frontend Structure
+```
+frontend/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── context/       # Application state management
+│   ├── pages/         # Page components
+│   │   ├── auth/     # Login and registration
+│   │   ├── dashboard/ # User dashboard
+│   │   └── recommendations/ # Career recommendations
+│   ├── services/     # API integration
+│   └── utils/        # Helper functions
+├── public/           # Static assets
+└── index.html
+```
 
-### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- PostgreSQL
-- Google Gemini API key
-- YouTube Data API key
+## API Endpoints
 
-### Backend Setup
+### Authentication Endpoints (`/auth/`)
+- `POST /auth/register/` - User registration
+- `POST /auth/login/` - User login
+- `POST /auth/logout/` - User logout
+- `GET /auth/profile/` - Get user profile
 
-bash
-Create virtual environment
-python -m venv venv
-source venv/bin/activate # Windows: venv\Scripts\activate
-Install dependencies
-pip install -r requirements.txt
-Setup environment variables
-cp .env.example .env
-Edit .env with your configurations
-Run migrations
-python manage.py migrate
-Start server
-python manage.py runserver
+### Career Path Endpoints (`/api/`)
+- `POST /api/upload/` - Upload grade cards and certifications
+- `GET /api/recommendations/` - Get career recommendations
+- `GET /api/courses/` - Get recommended courses
+- `GET /api/analysis/` - Get academic performance analysis
 
-### Frontend Setup
+## Features
 
-bash
-cd frontend
-Install dependencies
-npm install
-Start development server
-npm run dev
+### User Authentication
+- Secure registration and login system
+- JWT-based authentication
+- Protected routes for authenticated users
 
-## Environment Variables
+### File Upload
+- Support for CSV/JSON file formats
+- Grade card data validation
+- Certification verification
+- Progress tracking during upload
+
+## Environment Configuration
 
 ### Backend (.env)
-Database
+```env
+# Database Configuration
 DB_NAME=career_recommendation
 DB_USER=postgres
 DB_PASSWORD=your_password
 DB_HOST=localhost
 DB_PORT=5432
-API Keys
+
+# API Keys
 YOUTUBE_API_KEY=your_youtube_api_key
 GEMINI_API_KEY=your_gemini_api_key
-Django
+
+# Django Settings
 DEBUG=True
-SECRET_KEY=your_secret_key
+SECRET_KEY=your_secret_key_here
 ALLOWED_HOSTS=localhost,127.0.0.1
+```
 
-### Frontend (.env)
-env
-VITE_API_URL=http://localhost:8000
 
-Let me know if you want me to continue with the other parts covering:
-Each section will be detailed and well-structured!
+## Setup Instructions
+
+### Backend Setup
+```bash
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Start server
+python manage.py runserver
+```
+
+### Frontend Setup
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+## Security Considerations
+
+- Secure file upload validation
+- JWT token expiration and refresh
+- CORS configuration
+- Input sanitization
+- Secure storage of API keys
+- Data encryption
+
+
+## 📂 Sample Data
+
+The `sample_data/` directory contains test data used for evaluating the career recommendation system.
+
+### 📁 Structure
+
+### Grade Card Format (CSV)
+```csv
+subject,score,semester
+Mathematics,95,1
+Computer Science,88,1
+Physics,92,1
+```
+
+### Certification Format (JSON)
+```json
+{
+  "certifications": [
+    {
+      "name": "Python Programming",
+      "issuer": "Coursera",
+      "date": "2024-01-15"
+    }
+  ]
+}
+```
+
+## Future Enhancements
+
+- Machine learning model integration
+
+---
+
+For additional support or contributions, please create an issue or submit a pull request.
