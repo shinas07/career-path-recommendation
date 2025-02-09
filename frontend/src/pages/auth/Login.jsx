@@ -40,7 +40,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex">
+    <div className="min-h-screen bg-[#0a0a0a] text-white flex">
       {/* Left Panel - Career Guidance Info */}
       <div className="hidden lg:flex lg:w-1/2 bg-black p-12 flex-col justify-between relative">
         <div className="relative z-10 mt-16">
@@ -51,7 +51,7 @@ function Login() {
           >
             <h1 className="text-4xl font-bold mb-4">
               Welcome Back to Your
-              <span className="text-blue-400 "> Career Journey</span>
+              <span className="text-blue-500"> Career Journey</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8">
               Continue exploring personalized career recommendations and insights 
@@ -79,8 +79,7 @@ function Login() {
         </div>
         
         {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-50" />
-        <div className="absolute inset-0 backdrop-blur-3xl" />
+        <div className="absolute inset-0 bg-[#111111]/50" />
       </div>
 
       {/* Right Panel - Login Form */}
@@ -91,7 +90,7 @@ function Login() {
           transition={{ duration: 0.8 }}
           className="max-w-md w-full"
         >
-          <div className="bg-gray-900/30 p-8 rounded-2xl backdrop-blur-xl border border-gray-800">
+          <div className="bg-[#111111]/80 p-8 rounded-2xl backdrop-blur-xl border border-[#2a2a2a]">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-2">Welcome Back</h2>
               <p className="text-gray-400">
@@ -132,12 +131,10 @@ function Login() {
                 type="submit"
                 disabled={isLoading}
                 className="w-full py-3 px-4 rounded-lg text-white text-lg font-semibold
-                         bg-gradient-to-r from-blue-500 to-blue-600
-                         hover:from-blue-600 hover:to-blue-700
+                         bg-blue-600 hover:bg-blue-700
                          focus:outline-none focus:ring-2 focus:ring-blue-500
-                         transform hover:scale-105 transition-all duration-300
-                         disabled:opacity-50 disabled:cursor-not-allowed
-                         shadow-lg shadow-blue-500/30"
+                         transform transition-all duration-300
+                         disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
@@ -159,7 +156,7 @@ function Login() {
             <div className="mt-6 text-center">
               <p className="text-gray-400">
                 Don't have an account?{' '}
-                <Link to="/register" className="text-blue-400 hover:text-blue-300">
+                <Link to="/register" className="text-blue-500 hover:text-blue-400">
                   Create account
                 </Link>
               </p>
@@ -175,7 +172,7 @@ function Login() {
 function Feature({ icon, title, description }) {
   return (
     <div className="flex items-start space-x-4">
-      <div className="flex-shrink-0 p-3 bg-blue-500/10 rounded-lg">
+      <div className="flex-shrink-0 p-3 bg-[#1a1a1a] rounded-lg">
         {icon}
       </div>
       <div>
@@ -193,8 +190,9 @@ function FormInput({ icon, ...props }) {
         {icon}
       </div>
       <input
-        className="block w-full pl-10 pr-4 py-3 border border-gray-700 rounded-lg
-                   bg-gray-800/50 text-white placeholder-gray-400
+        className="block w-full pl-10 pr-4 py-3 
+                   border border-[#2a2a2a] rounded-lg
+                   bg-[#1a1a1a] text-white placeholder-gray-500
                    focus:outline-none focus:ring-2 focus:ring-blue-500
                    transition-all duration-300"
         {...props}
