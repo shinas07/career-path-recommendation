@@ -2,6 +2,15 @@
 
 A full-stack application that helps students identify optimal career paths based on their academic performance and certifications. The system analyzes grade cards and certifications to provide personalized career recommendations and upskilling suggestions.
 
+## Screenshots
+
+### Landing Page
+![Landing Page](assets/career_landing_page.png)
+
+### Certification Upload for Analyzing
+![User Dashboard](assets/analyzer.png)
+
+
 ## System Overview
 
 The Career Path Recommendation System provides:
